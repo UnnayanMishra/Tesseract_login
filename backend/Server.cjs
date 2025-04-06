@@ -4,7 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+// ✅ Use dynamic port from Railway or fallback to 3000 for local dev
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -45,6 +46,7 @@ app.post('/verify-user', (req, res) => {
   });
 });
 
+// ✅ Dynamic server start message
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
